@@ -18,10 +18,15 @@ jobs:
         with:
           node-version: "18"
 
+      - name: Clean environment
+        run: |
+          rm -rf node_modules
+          rm -rf package-lock.json
+
       - name: Install dependencies
         run: |
-          npm install
-          npm install --save-dev electron-builder@latest
+          npm install --legacy-peer-deps
+          npm install --save-dev electron@latest electron-builder@latest
 
       - name: Build React app
         env:
@@ -29,8 +34,6 @@ jobs:
         run: npm run build
 
       - name: Build Electron app
-        env:
-          NODE_OPTIONS: --openssl-legacy-provider
         run: npx electron-builder --dir
 
       - name: Upload artifact

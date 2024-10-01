@@ -1,49 +1,28 @@
 {
   "name": "student-tasks",
-  "version": "0.1.0",
-  "description": "A student task management application",
-  "author": "Your Name <your.email@example.com>",
+  "version": "1.0.0",
   "private": true,
-  "dependencies": {
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "react-scripts": "4.0.3",
-    "react-router-dom": "^6.16.0"
-  },
   "main": "public/electron.js",
   "homepage": "./",
+  "dependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-router-dom": "^6.16.0",
+    "react-scripts": "4.0.3"
+  },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts --openssl-legacy-provider build",
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "electron": "electron .",
-    "electron-dev": "set ELECTRON_START_URL=http://localhost:3000 && electron .",
-    "package": "electron-builder build --mac -c.extraMetadata.main=build/electron.js --publish never",
-    "electron:dev": "concurrently \"BROWSER=none npm start\" \"wait-on http://localhost:3000 && electron .\"",
+    "electron:start": "electron .",
     "electron:build": "electron-builder --dir"
   },
-  "build": {
-    "appId": "com.yourcompany.yourappname",
-    "productName": "Your App Name",
-    "files": [
-      "build/**/*",
-      "node_modules/**/*",
-      "package.json"
-    ],
-    "directories": {
-      "buildResources": "assets"
-    },
-    "mac": {
-      "target": "dir"
-    }
-  },
-  "devDependencies": {
-    "electron": "^13.6.9",
-    "concurrently": "^9.0.1",
-    "electron-builder": "^22.11.7",
-    "electron-is-dev": "^3.0.1",
-    "wait-on": "^8.0.1"
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
   },
   "browserslist": {
     "production": [
@@ -57,10 +36,8 @@
       "last 1 safari version"
     ]
   },
-  "resolutions": {
-    "fsevents": "^2.3.2"
-  },
-  "engines": {
-    "node": ">=18"
+  "devDependencies": {
+    "electron": "latest",
+    "electron-builder": "latest"
   }
 }
