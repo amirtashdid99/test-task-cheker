@@ -15,7 +15,7 @@ jobs:
       - name: Use Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: "14" # or whichever version you're using
+          node-version: "18" # or whichever version you're using
 
       - name: Install dependencies
         run: npm install
@@ -27,7 +27,7 @@ jobs:
         run: npm run electron:build
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: MacOS App
           path: dist/*.app
