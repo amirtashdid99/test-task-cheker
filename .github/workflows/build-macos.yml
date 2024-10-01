@@ -28,6 +28,9 @@ jobs:
           npm install
           npm install --save-dev electron@latest electron-builder@latest
 
+      - name: Audit dependencies
+        run: npm audit fix --force
+
       - name: Build React app
         run: npm run build
 
@@ -38,4 +41,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: MacOS App
-          path: dist/mac/*.app
+          path: dist/mac-arm64/*.app
