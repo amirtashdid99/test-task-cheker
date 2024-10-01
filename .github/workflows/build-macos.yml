@@ -62,3 +62,24 @@ jobs:
 
       - name: Check notarize.js content
         run: cat scripts/notarize.js
+
+      - name: Install @babel/plugin-proposal-private-property-in-object
+        run: npm install --save-dev @babel/plugin-proposal-private-property-in-object
+
+      - name: Install dmg-license globally
+        run: npm install -g dmg-license
+
+      - name: Link dmg-license
+        run: npm link dmg-license
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build React app
+        run: npm run build
+
+      - name: Build Electron app
+        run: npm run electron:build
+
+      - name: Update electron-builder
+        run: npm install electron-builder@latest --save-dev

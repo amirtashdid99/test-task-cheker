@@ -1,6 +1,8 @@
 {
   "name": "student-tasks",
   "version": "0.1.0",
+  "description": "A student task management application",
+  "author": "Your Name <your.email@example.com>",
   "private": true,
   "dependencies": {
     "react": "^18.3.1",
@@ -18,7 +20,7 @@
     "electron-dev": "set ELECTRON_START_URL=http://localhost:3000 && electron .",
     "package": "electron-builder build --mac -c.extraMetadata.main=build/electron.js --publish never",
     "electron:dev": "concurrently \"BROWSER=none npm start\" \"wait-on http://localhost:3000 && electron .\"",
-    "electron:build": "npm run build && electron-builder --mac"
+    "electron:build": "npm run build && electron-builder --mac dir"
   },
   "build": {
     "appId": "com.amir-rahkar.task-checker",
