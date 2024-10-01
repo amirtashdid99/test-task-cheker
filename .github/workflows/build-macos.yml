@@ -18,27 +18,19 @@ jobs:
         with:
           node-version: "18"
 
-      - name: Clean environment
-        run: |
-          rm -rf node_modules
-          rm -rf package-lock.json
-
       - name: Install dependencies
         run: |
-          npm install
-          npm install --save-dev electron@latest electron-builder@latest
-
-      - name: Audit dependencies
-        run: npm audit fix --force
+          npm ci
+          npm install electron electron-builder --save-dev
 
       - name: Build React app
         run: npm run build
 
       - name: Build Electron app
-        run: npx electron-builder --dir
+        run: npm run electron:build
 
       - name: Upload artifact
         uses: actions/upload-artifact@v3
         with:
           name: MacOS App
-          path: dist/mac-arm64/*.app
+          path: dist/*.dmg
