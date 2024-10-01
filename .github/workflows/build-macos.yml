@@ -21,7 +21,7 @@ jobs:
       - name: Install dependencies
         run: |
           npm ci
-          npm install electron electron-builder --save-dev
+          npm install --save-dev electron electron-builder
 
       - name: Build React app
         run: npm run build
@@ -33,4 +33,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: MacOS App
-          path: dist/*.dmg
+          path: dist/mac/*.app
