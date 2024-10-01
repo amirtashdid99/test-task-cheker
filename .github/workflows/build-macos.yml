@@ -21,16 +21,21 @@ jobs:
       - name: Install dependencies
         run: |
           npm install
-          npm install --save-dev electron electron-builder
+          npm install --save-dev electron electron-builder electron-is-dev
 
       - name: Build React app
         run: npm run build
 
+      - name: Copy electron.js to build
+        run: cp public/electron.js build/electron.js
+
       - name: Build Electron app
-        run: npm run electron:build
+        run: npm run electron:build -- --publish never
 
       - name: Upload artifact
         uses: actions/upload-artifact@v3
         with:
           name: MacOS App
-          path: dist/mac/*.app
+          path: |
+            dist/*.dmg
+            dist/*.zip
