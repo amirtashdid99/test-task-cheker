@@ -25,7 +25,7 @@ jobs:
         run: npm ci
 
       - name: Install react-router-dom
-      run: npm install react-router-dom
+        run: npm install react-router-dom
 
       - name: Install electron-builder globally
         run: npm install -g electron-builder
