@@ -21,11 +21,15 @@ jobs:
       - name: Clear npm cache
         run: npm cache clean --force
 
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Install react-router-dom
-        run: npm install react-router-dom
+      - name: Install dependencies and update lock file
+        run: |
+          npm install
+          npm install react-router-dom
+          git config --global user.email "github-actions@github.com"
+          git config --global user.name "GitHub Actions"
+          git add package.json package-lock.json
+          git commit -m "Update dependencies and lock file" || echo "No changes to commit"
+          git push origin ${GITHUB_REF##*/} || echo "No changes to push"
 
       - name: Install electron-builder globally
         run: npm install -g electron-builder
