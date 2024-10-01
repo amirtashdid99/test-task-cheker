@@ -39,3 +39,9 @@ jobs:
         run: |
           export NODE_OPTIONS=--openssl-legacy-provider
           npm run build
+
+      - name: Clean npm cache and reinstall
+        run: |
+          npm cache clean --force
+          rm -rf node_modules
+          npm install
