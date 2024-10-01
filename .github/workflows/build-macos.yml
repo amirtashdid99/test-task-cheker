@@ -25,12 +25,10 @@ jobs:
 
       - name: Install dependencies
         run: |
-          npm install --legacy-peer-deps
+          npm install
           npm install --save-dev electron@latest electron-builder@latest
 
       - name: Build React app
-        env:
-          NODE_OPTIONS: --openssl-legacy-provider
         run: npm run build
 
       - name: Build Electron app
