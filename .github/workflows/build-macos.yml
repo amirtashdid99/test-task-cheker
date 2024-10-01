@@ -45,3 +45,20 @@ jobs:
           npm cache clean --force
           rm -rf node_modules
           npm install
+
+      - name: Install dmg-license
+        run: npm install dmg-license --save-dev
+
+      - name: Create scripts directory
+        run: mkdir -p scripts
+
+      - name: Create notarize.js
+        run: |
+          cat << EOF > scripts/notarize.js
+          exports.default = async function notarizing(context) {
+            return;
+          };
+          EOF
+
+      - name: Check notarize.js content
+        run: cat scripts/notarize.js

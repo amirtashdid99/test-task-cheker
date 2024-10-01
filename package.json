@@ -18,18 +18,22 @@
     "electron-dev": "set ELECTRON_START_URL=http://localhost:3000 && electron .",
     "package": "electron-builder build --mac -c.extraMetadata.main=build/electron.js --publish never",
     "electron:dev": "concurrently \"BROWSER=none npm start\" \"wait-on http://localhost:3000 && electron .\"",
-    "electron:build": "npm run build && electron-builder -m"
+    "electron:build": "npm run build && electron-builder --mac"
   },
   "build": {
-    "appId": "com.rahkar-amir.task-checker",
+    "appId": "com.amir-rahkar.task-checker",
     "productName": "Task Checker",
-    "files": [
-      "build/**/*",
-      "node_modules/**/*"
-    ],
-    "directories": {
-      "buildResources": "assets"
-    }
+    "mac": {
+      "category": "public.app-category.utilities",
+      "target": [
+        "dmg",
+        "zip"
+      ]
+    },
+    "dmg": {
+      "sign": false
+    },
+    "afterSign": "scripts/notarize.js"
   },
   "devDependencies": {
     "electron": "^13.6.9",
